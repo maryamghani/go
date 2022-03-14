@@ -20,7 +20,7 @@ const (
 )
 
 var (
-	errInvalidURL        = errors.New("Invalid URL")
+	errInvalidURL        = errors.New("invalid URL")
 	errRedirectLoop      = errors.New(" I'm sorry, Dave. I'm afraid I can't do that")
 	genURLPrefix    byte = ':'
 	postGenCursor        = []byte{genURLPrefix + 1}
@@ -76,7 +76,7 @@ func validateURL(r *http.Request, s string) error {
 }
 
 func apiURLPost(backend backend.Backend, host string, w http.ResponseWriter, r *http.Request) {
-	p := parseName("/api/url/", r.URL.Path)
+	p, _ := parseName("/api/url/", r.URL.Path)
 
 	var req struct {
 		URL string `json:"url"`
@@ -129,7 +129,7 @@ func apiURLPost(backend backend.Backend, host string, w http.ResponseWriter, r *
 }
 
 func apiURLGet(backend backend.Backend, host string, w http.ResponseWriter, r *http.Request) {
-	p := parseName("/api/url/", r.URL.Path)
+	p, _ := parseName("/api/url/", r.URL.Path)
 
 	if p == "" {
 		writeJSONError(w, "no name given", http.StatusBadRequest)
@@ -152,7 +152,7 @@ func apiURLGet(backend backend.Backend, host string, w http.ResponseWriter, r *h
 }
 
 func apiURLDelete(backend backend.Backend, w http.ResponseWriter, r *http.Request) {
-	p := parseName("/api/url/", r.URL.Path)
+	p, _ := parseName("/api/url/", r.URL.Path)
 
 	if p == "" {
 		writeJSONError(w, "name required", http.StatusBadRequest)
