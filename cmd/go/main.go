@@ -9,10 +9,10 @@ import (
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 
-	"github.com/kellegous/go/backend"
-	"github.com/kellegous/go/backend/firestore"
-	"github.com/kellegous/go/backend/leveldb"
-	"github.com/kellegous/go/web"
+	"github.com/maryamghani/go/backend"
+	"github.com/maryamghani/go/backend/firestore"
+	"github.com/maryamghani/go/backend/leveldb"
+	"github.com/maryamghani/go/web"
 )
 
 func main() {
